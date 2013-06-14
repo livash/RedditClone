@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   has_many :links,
   :foreign_key => :author_id
   
+  has_many :comments,
+  :foreign_key => :author_id
+  
   # accepts_nested_attributes_for :links, :reject_if => :all_blank
   
   validates :username, :uniqueness => true
