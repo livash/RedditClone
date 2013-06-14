@@ -1,0 +1,27 @@
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<label for="sub_name">Sub name:</label>
+<input type="text" id="sub_name" name="sub[name]" value="<%= @sub.name %>">
+<br>
+<br>
+First links for this sub:
+<br>
+
+<% if @sub.links %>
+	<% iterations = @sub.links.length %>
+<% else %>
+	<% iterations = 5 %>
+<% end %>
+<% i = 0 %>
+<% iterations.times do %>
+<label for="sub_links_attributes_url_<%= i %>">Link <%= i + 1 %></label>
+<input type="text" 
+		id="sub_links_attributes_url_<%= i %>" 
+		name="sub[links_attributes][<%= i %>][url]"
+		value="<%= @sub.links[i].url %>">
+<input type="hidden"
+		name="sub[links_attributes][<%= i %>][id]"
+		value="<%= @sub.links[i].id %>">
+<br>
+<% i += 1 %>
+<% end %>
+		

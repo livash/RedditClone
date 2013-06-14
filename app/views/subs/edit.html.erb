@@ -1,0 +1,20 @@
+<h1>Edit sub, <%= @sub.name.capitalize %> </h1>
+<form action="<%= sub_url(@sub) %>" method="post">
+	<input type="hidden" name="_method" value="put">
+	<input type="hidden" name="sub[id]" value="<%= @sub.id %>">
+	<%= render :partial => "sub_form" %>
+	<% i = 1 + @sub.links.length %>
+	<% 3.times do %>
+	<label for="sub_links_attributes_url_<%= i %>">Link <%= i %></label>
+	<input type="hidden" 
+			name="sub[links_attributes][<%= i %>][author_id]" 
+			value="<%= @user.id %>">
+	<input type="text" 
+			id="sub_links_attributes_url_<%= i %>" 
+			name="sub[links_attributes][<%= i %>][url]">
+
+	<br>
+	<% i += 1 %>
+	<% end %>
+	<p><input type="submit" value="Edit Sub"></p>
+</form>

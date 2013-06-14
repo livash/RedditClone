@@ -1,0 +1,13 @@
+<h1>Information about a Sub, <%= @sub.name %></h1>
+<h5>Sub Name:</h5>
+<%= @sub.name %>
+<h5>Sub moderator:</h5>
+<%= @sub.moderator.name.capitalize %>
+<h5>Links associated with this Sub:</h5>
+<% @sub.links.each do |link| %>
+<%= link.url %>
+<br>
+<% end %>
+<br>
+<br>
+<%= button_to "Edit Sub", edit_sub_url(@sub), :method => :get %>
